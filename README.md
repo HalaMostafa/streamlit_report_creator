@@ -1,4 +1,4 @@
-# **EasyWrangler**
+# **Report Creator**
 #### Streamlit Report Creator
 ## Features
 
