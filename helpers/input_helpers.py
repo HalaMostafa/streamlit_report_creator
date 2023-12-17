@@ -2,14 +2,17 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 
+
 def fileUploader():
     """
     input widget to Browse csv file from local machine 
     """
-    return st.file_uploader(
-        label  = "Choose a CSV file",
-        accept_multiple_files = False,
-        )
+    uploaded_file = st.file_uploader("Upload CSV", type=['csv'])
+    if uploaded_file is not None:
+        # Process the uploaded file
+        st.write("File uploaded successfully!")
+        # Add your processing logic here
+    return uploaded_file
 
 def getDataFrame(uploaded_file):
     """
