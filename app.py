@@ -16,7 +16,7 @@ def main():
     option = None # Initialize selected_option outside the sidebar
     sideBar()
     try:
-        st.write(df.head())
+        st.write(analysis_helpers.df.head())
         if 'click_count' not in st.session_state:
             st.session_state.click_count = 0
         if 'click_history' not in st.session_state:
@@ -24,18 +24,15 @@ def main():
 
         if st.button('Add Analysis'):
             st.session_state.click_count += 1
-            st.session_state.click_history.append(f'Button clicked {st.session_state.click_count} times')
+            st.session_state.click_history.append(st.session_state.click_count)
 
-        for _ in st.session_state.click_history:
+        for history in st.session_state.click_history:
             with st.sidebar:
-                option = st.selectbox("Select Analysis",[None,'one level pivot table','two level pivot table'])
+                option = st.selectbox("Select Analysis",[None,'one level pivot table','two level pivot table'],key=history)
             if option is not None:
                 st.write('You Selected',option) 
     except NameError:
         print("waiting for data to be uploaded!")
-
-
-
 
 
 
